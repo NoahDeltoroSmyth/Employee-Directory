@@ -1,4 +1,5 @@
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import LandingPage from './views/LandingPage/LandingPage';
 
 export default function App() {
   return (
@@ -9,7 +10,7 @@ export default function App() {
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route path="/sign-in">
+          {/* <Route path="/sign-in">
             <SignIn />
           </Route>
           <Route path="/sign-up">
@@ -23,7 +24,7 @@ export default function App() {
           </Route>
           <Route path="/edit-profile">
             <EditProfile />
-          </Route>
+          </Route> */}
         </Switch>
       </BrowserRouter>
     </>
