@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Form({ label }) {
+export default function Form({ label, handleAuth }) {
   return (
     <>
-      <form>
+      <form onSubmit={handleAuth}>
         <legend>{label}</legend>
         <label htmlFor="email">Email</label>
         <input id="email" name="email" type="email" required />
