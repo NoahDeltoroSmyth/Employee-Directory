@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './Header.css';
 
 export default function Header() {
   return (
-    <>
+    <div className={styles.header}>
       <Link to="/">
         <h1>Acme Employee Directory</h1>
       </Link>
@@ -15,6 +16,6 @@ export default function Header() {
 
       <p>Signed in as</p>
       <button>Sign Out</button>
-    </>
+    </div>
   );
 }
