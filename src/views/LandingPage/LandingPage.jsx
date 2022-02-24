@@ -14,7 +14,7 @@ export default function LandingPage() {
       <p>Thank you for your participation.</p>
       {/*TODO: make a conditional link render based on whether someon is logged in or not*/}
       <Link to="/sign-up">Create an Account</Link>
-      <Link to="/sign-iin">Sign In</Link>
+      <Link to="/sign-in">Sign In</Link>
     </>
   );
 }

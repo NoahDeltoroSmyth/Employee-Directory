@@ -1,4 +1,5 @@
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import Auth from './views/Auth/Auth';
 import LandingPage from './views/LandingPage/LandingPage';
 
 export default function App() {
@@ -10,13 +11,13 @@ export default function App() {
           <Route exact path="/">
             <LandingPage />
           </Route>
-          {/* <Route path="/sign-in">
-            <SignIn />
+          <Route path="/sign-in">
+            <Auth />
           </Route>
           <Route path="/sign-up">
-            <SignUp />
+            <Auth signingUp />
           </Route>
-          <Route path="/create-profile">
+          {/* <Route path="/create-profile">
             <CreateProfile />
           </Route>
           <Route path="/profile">
