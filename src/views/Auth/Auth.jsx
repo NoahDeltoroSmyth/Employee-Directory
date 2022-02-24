@@ -1,11 +1,11 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import Form from '../../components/Form/Form';
-import { useUser } from '../../context/UserContext/UserContext';
-import { signInUser, signUpUser } from '../../services/users';
+// import { useUser } from '../../context/UserContext/UserContext';
+// import { signInUser, signUpUser } from '../../services/users';
 
 export default function Auth({ signingUp }) {
-  const { setUser } = useUser();
+  //   const { setUser } = useUser();
   const history = useHistory();
 
   const handleAuth = async (email, password) => {
