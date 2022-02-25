@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 
 export const client = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABSE_KEY
+  process.env.SUPABASE_KEY
 );
 
 export const parseData = ({ data, error }) => {

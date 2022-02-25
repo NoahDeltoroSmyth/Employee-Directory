@@ -3,7 +3,7 @@ import { getUser } from '../../services/users';
 
 export const userContext = createContext();
 
-const userProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const currentUser = getUser();
   const [user, setUser] = useState(
     currentUser ? { id: currentUser.id, email: currentUser.email } : {}
@@ -14,11 +14,11 @@ const userProvider = ({ children }) => {
   );
 };
 const useUser = () => {
-  const context = useContext();
+  const context = useContext(userContext);
   if (context === undefined) {
     throw new Error('useUser must be used within a userProvider');
   }
   return context;
 };
 
-export { userProvider, useUser };
+export { UserProvider, useUser };

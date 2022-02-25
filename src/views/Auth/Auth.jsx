@@ -1,11 +1,11 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import Form from '../../components/Form/Form';
-// import { useUser } from '../../context/UserContext/UserContext';
-// import { signInUser, signUpUser } from '../../services/users';
+import { useUser } from '../../context/UserContext/UserContext';
+import { signInUser, signUpUser } from '../../services/users';
 
-export default function Auth({ signingUp }) {
-  //   const { setUser } = useUser();
+export default function Auth({ signingUp = false }) {
+  const { setUser } = useUser();
   const history = useHistory();
 
   const handleAuth = async (email, password) => {
@@ -26,7 +26,7 @@ export default function Auth({ signingUp }) {
   return (
     <>
       <h1>{signingUp ? 'Welcome!' : 'Welcome Back!'}</h1>
-      <Form handleAuth={handleAuth} label={signingUp ? 'Sign Up' : 'Sign In'} />
+      <Form onSubmit={handleAuth} label={signingUp ? 'Sign Up' : 'Sign In'} />
       {signingUp ? (
         <p>
           Already have an account?
