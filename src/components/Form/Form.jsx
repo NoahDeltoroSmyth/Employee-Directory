@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/useForm/useForm';
 
 export default function Form({ onSubmit, label }) {
@@ -15,9 +14,15 @@ export default function Form({ onSubmit, label }) {
     e.preventDefault();
     const { email, password } = formState;
     try {
+      setFormError('');
+      if (!email || password.length < 8)
+        throw new Error('You must create a password 8 characters or longer');
       await onSubmit(email, password);
+      setLoading(true);
     } catch (error) {
       setFormError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -29,7 +34,7 @@ export default function Form({ onSubmit, label }) {
           id="email"
           name="email"
           type="email"
-          required
+          // required
           value={formState.email}
           onChange={handleFormChange}
         />
@@ -38,11 +43,12 @@ export default function Form({ onSubmit, label }) {
           id="password"
           name="password"
           type="password"
-          required
+          // required
           value={formState.password}
           onChange={handleFormChange}
         />
         <button type="submit">{label}</button>
+        {formError && <p>{formError}</p>}
       </form>
     </>
   );
