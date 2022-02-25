@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useProfile } from '../../context/ProfileContext/profileContext';
-import { useUser } from '../../context/UserContext/UserContext';
-import useForm from '../../hooks/useForm/useForm';
+// import { useUser } from '../../context/UserContext/UserContext';
+// import useForm from '../../hooks/useForm/useForm';
 import { createProfile } from '../../services/profiles';
 
 export default function CreateProfile() {

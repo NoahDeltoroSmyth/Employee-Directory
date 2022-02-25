@@ -7,7 +7,6 @@ import styles from './Header.css';
 
 export default function Header() {
   const { user, setUser } = useUser();
-  console.log('user', user);
   const history = useHistory();
 
   return (
