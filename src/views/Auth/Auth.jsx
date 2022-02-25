@@ -5,7 +5,8 @@ import { useUser } from '../../context/UserContext/UserContext';
 import { signInUser, signUpUser } from '../../services/users';
 
 export default function Auth({ signingUp = false }) {
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
+  console.log('user', user);
   const history = useHistory();
 
   const handleAuth = async (email, password) => {
@@ -15,6 +16,7 @@ export default function Auth({ signingUp = false }) {
         history.replace('/create-profile');
       } else {
         const resp = await signInUser(email, password);
+        console.log('resp', resp);
         setUser({ id: resp.id, email: resp.email });
         history.replace('/profile');
       }

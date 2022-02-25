@@ -17,6 +17,7 @@ export default function Form({ onSubmit, label }) {
       setFormError('');
       if (!email || password.length < 8)
         throw new Error('You must create a password 8 characters or longer');
+      setLoading(true);
       await onSubmit(email, password);
       setLoading(true);
     } catch (error) {
@@ -47,7 +48,9 @@ export default function Form({ onSubmit, label }) {
           value={formState.password}
           onChange={handleFormChange}
         />
-        <button type="submit">{label}</button>
+        <button type="submit" disabled={loading}>
+          {loading ? '...loading' : label}
+        </button>
         {formError && <p>{formError}</p>}
       </form>
     </>

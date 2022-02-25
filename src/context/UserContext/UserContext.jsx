@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { getUser } from '../../services/users';
 
-export const userContext = createContext();
+export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const currentUser = getUser();
@@ -10,11 +10,11 @@ const UserProvider = ({ children }) => {
   );
   const context = { user, setUser };
   return (
-    <userContext.Provider value={context}>{children}</userContext.Provider>
+    <UserContext.Provider value={context}>{children}</UserContext.Provider>
   );
 };
 const useUser = () => {
-  const context = useContext(userContext);
+  const context = useContext(UserContext);
   if (context === undefined) {
     throw new Error('useUser must be used within a userProvider');
   }

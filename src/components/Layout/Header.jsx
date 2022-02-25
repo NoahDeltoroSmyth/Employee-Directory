@@ -1,20 +1,33 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useUser } from '../../context/UserContext/UserContext';
+import { signOutUser } from '../../services/users';
 import styles from './Header.css';
 
 export default function Header() {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
+  console.log('user', user);
+  const history = useHistory();
+
   return (
     <div className={styles.header}>
       <Link to="/">
         <h1>Acme Employee Directory</h1>
       </Link>
 
-      {user ? (
+      {user.email ? (
         <>
           <p>Signed in as {user.email}</p>
-          <button>Sign Out</button>
+          <button
+            onClick={async () => {
+              await signOutUser();
+              setUser({});
+              history.push('/');
+            }}
+          >
+            Sign Out
+          </button>
         </>
       ) : (
         <>
