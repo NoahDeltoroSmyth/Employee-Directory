@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
+import { useProfile } from '../../context/ProfileContext/profileContext';
 import { useUser } from '../../context/UserContext/UserContext';
+import useForm from '../../hooks/useForm/useForm';
 import { createProfile } from '../../services/profiles';
 
 export default function CreateProfile() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [bio, setBio] = useState('');
+  // const { user } = useUser();
+  const { bio, setBio, email, setEmail, name, setName, birthday, setBirthday } =
+    useProfile();
 
-  const { user } = useUser();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
 
-  const handleCreate = async (e) => {
-    e.preventDefault();
-    await createProfile(name, email, bio, birthday);
+  const handleCreate = async (name, email, bio, birthday) => {
+    await createProfile({ name, email, bio, birthday });
   };
 
   return (
-    <form onSubmit={handleCreate}>
+    <form {...handleCreate}>
       <legend>Tell us about yourself!</legend>
       <label>Name</label>
       <input
